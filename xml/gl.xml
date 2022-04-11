@@ -5584,7 +5584,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8F6A" name="GL_TEXTURE_UNNORMALIZED_COORDINATES_ARM" group="SamplerParameterF,SamplerParameterI,GetTextureParameter,TextureParameterName"/>
             <unused start="0x8F6B" end="0x8F6D" vendor="ARM"/>
         <enum value="0x8F6E" name="GL_NUM_SURFACE_COMPRESSION_FIXED_RATES_EXT" group="InternalFormatPName"/>
-            <unused start="0x8F6F" end="0x8F6F" vendor="ARM"/>
+        <enum value="0x8F6F" name="GL_FRAGMENT_SHADING_RATE_NON_TRIVIAL_COMBINERS_SUPPORTED_EXT" group=""/>
     </enums>
 
     <enums namespace="GL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with EGL.">
@@ -6941,7 +6941,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x96DC" name="GL_MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_LAYERS_EXT" group=""/>
         <enum value="0x96DD" name="GL_FRAGMENT_SHADING_RATE_WITH_SHADER_DEPTH_STENCIL_WRITES_SUPPORTED_EXT" group=""/>
         <enum value="0x96DE" name="GL_FRAGMENT_SHADING_RATE_WITH_SAMPLE_MASK_SUPPORTED_EXT" group=""/>
-        <unused start="0x96DF" end="0x96DF" vendor="ARM"/>
+        <enum value="0x96DF" name="GL_FRAGMENT_SHADING_RATE_ATTACHMENT_WITH_DEFAULT_FRAMEBUFFER_SUPPORTED_EXT" group=""/>
     </enums>
 
     <enums namespace="GL" start="0x96E0" end="0x96EF" vendor="ANGLE" comment="Reserved for Ken Russell - ANGLE (via github pull request)">
@@ -12316,6 +12316,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto>void <name>glFramebufferShadingRateEXT</name></proto>
             <param group="FramebufferTarget"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="FramebufferAttachment"><ptype>GLenum</ptype> <name>attachment</name></param>
             <param class="texture"><ptype>GLuint</ptype> <name>texture</name></param>
             <param><ptype>GLint</ptype> <name>baseLayer</name></param>
             <param><ptype>GLsizei</ptype> <name>numLayers</name></param>
@@ -40769,6 +40770,40 @@ typedef unsigned int GLhandleARB;
                 <command name="glFogCoorddEXT"/>
                 <command name="glFogCoorddvEXT"/>
                 <command name="glFogCoordPointerEXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_fragment_shading_rate" supported="gl|gles2">
+            <require>
+                <enum name="GL_SHADING_RATE_1X1_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_1X2_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_2X1_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_2X2_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_1X4_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_4X1_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_4X2_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_2X4_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_4X4_PIXELS_EXT"/>
+                <enum name="GL_SHADING_RATE_EXT"/>
+                <enum name="GL_SHADING_RATE_ATTACHMENT_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_EXT"/>
+                <enum name="GL_MIN_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_WIDTH_EXT"/>
+                <enum name="GL_MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_WIDTH_EXT"/>
+                <enum name="GL_MIN_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_HEIGHT_EXT"/>
+                <enum name="GL_MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_HEIGHT_EXT"/>
+                <enum name="GL_MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_ASPECT_RATIO_EXT"/>
+                <enum name="GL_MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_LAYERS_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_WITH_SHADER_DEPTH_STENCIL_WRITES_SUPPORTED_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_WITH_SAMPLE_MASK_SUPPORTED_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_ATTACHMENT_WITH_DEFAULT_FRAMEBUFFER_SUPPORTED_EXT"/>
+                <enum name="GL_FRAGMENT_SHADING_RATE_NON_TRIVIAL_COMBINERS_SUPPORTED_EXT"/>
+                <command name="glGetFragmentShadingRatesEXT"/>
+                <command name="glShadingRateEXT"/>
+                <command name="glShadingRateCombinerOpsEXT"/>
+                <command name="glFramebufferShadingRateEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_framebuffer_blit" supported="gl">
